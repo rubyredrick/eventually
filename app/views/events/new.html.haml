@@ -1,0 +1,17 @@
+- form_for @event do |f|
+  %fieldset
+    = f.label :summary, 'What'
+    = f.text_field :summary
+    = f.label :start_date, 'Start Date'
+    = f.text_field :start_date
+    = f.label :start_time, 'Start Time'
+    = f.text_field :start_time
+    = f.label :end_date, 'End Date'
+    = f.text_field :end_date
+    = f.label :end_time, 'End Time'
+    = f.text_field :end_time
+  %div.buttons
+    = f.submit 'Save'
+    or
+    = link_to 'Cancel', events_path
+    

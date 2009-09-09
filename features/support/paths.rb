@@ -11,6 +11,9 @@ module NavigationHelpers
     when /the homepage/
       '/'
     
+    when /the event listing page/
+      '/events'
+    
     # Add more mappings here.
     # Here is a more fancy example:
     #

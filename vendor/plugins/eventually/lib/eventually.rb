@@ -1,1 +1,2 @@
-# Eventually
+module Eventually
+end
