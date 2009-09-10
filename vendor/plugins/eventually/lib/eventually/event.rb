@@ -6,12 +6,13 @@ module Eventually
       @ical_event ||= RiCal.parse_string(ical_string || '').first || RiCal.Event
     end
     
-    def ends_at
-      @ends_at ||= ical_event.dtend ? ical_event.dtend.to_datetime : starts_at + 60 * 60
-    end
-    
     def starts_at
       @starts_at ||= ical_event.dtstart ? ical_event.dtstart.to_datetime : DateTime.now
+    end
+    
+    def starts_at=(date_time)
+      @start_time = @start_date = nil
+      @starts_at = date_time
     end
     
     def start_date
@@ -26,7 +27,7 @@ module Eventually
     end
     
     def start_time
-      @start_time ||= starts_at.strftime('%H:%M')
+      @start_time ||= starts_at.strftime('%l:%M%p').strip
     end
     
     def start_time=(string_time)
@@ -34,6 +35,15 @@ module Eventually
         @starts_at = parsed
       end
       @start_time = string_time
+    end
+    
+    def ends_at
+      @ends_at ||= ical_event.dtend ? ical_event.dtend.to_datetime : starts_at + 60 * 60
+    end
+    
+    def ends_at=(date_time)
+      @end_time = @end_date = nil
+      @ends_at = date_time
     end
     
     def end_date
@@ -48,7 +58,7 @@ module Eventually
     end
     
     def end_time
-      @end_time ||= ends_at.strftime('%H:%M')
+      @end_time ||= ends_at.strftime('%l:%M%p').strip
     end
     
     def end_time=(string_time)
