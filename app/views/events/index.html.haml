@@ -1,4 +1,4 @@
 %p= link_to 'New Event', new_event_path
 %ol
   - for event in @events
-    %li== #{h event.summary} at #{event.starts_at.to_s(:at)} on #{events.starts_at.to_s(:mdy)}
+    %li== #{h event.summary} from #{event.starts_at.to_s(:at)} on #{event.starts_at.to_s(:mdy)} until #{event.ends_at.to_s(:at)} on #{event.ends_at.to_s(:mdy)}

@@ -12,7 +12,9 @@
 ActiveRecord::Schema.define(:version => 20090908212353) do
 
   create_table "events", :force => true do |t|
-    t.string "ical"
+    t.string   "ical_string", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
